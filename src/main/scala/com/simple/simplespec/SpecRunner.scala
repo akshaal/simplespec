@@ -41,7 +41,8 @@ class SpecRunner(topKlass: Class[_]) extends Runner {
       isPublic(klass.getModifiers) &&
       !klass.isAnonymousClass &&
       !klass.isAnnotationPresent(classOf[Ignore]) &&
-      !isFinal(klass.getModifiers) // excludes anonymous classes written in Scala
+      !isFinal(klass.getModifiers) && // excludes anonymous classes written in Scala
+      !klass.getName.contains("$anon$")
   }
 
 
@@ -104,7 +105,7 @@ class InnerClassRunner(scope: List[Class[_]], klass: Class[_]) extends BlockJUni
         new RunAfters(stmt, List(new FrameworkMethod(method)), obj)
       } else stmt
     }
-    
+
     withAfters
   }
 

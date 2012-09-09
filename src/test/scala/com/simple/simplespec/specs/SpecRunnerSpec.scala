@@ -154,7 +154,7 @@ class SpecRunnerSpec {
   @Test
   def mustExplodeWhenNoTests() {
     import scala.collection.JavaConversions._
-    
+
     try {
       new SpecRunner(classOf[InvalidExample])
       fail("expected an InitializationError but didn't see one")
@@ -295,7 +295,6 @@ class AnonymousClassExample extends Spec {
   class `A thing` {
     val thing = new Runnable {
       def run() {
-        "woo"
       }
     }
 
